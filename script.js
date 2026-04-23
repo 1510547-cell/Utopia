@@ -1,6 +1,7 @@
 function openGame(url) {
   window.open(url, "_blank");
 }
+
 function toggleSettings() {
   document.getElementById("settings").classList.toggle("open");
 }
@@ -22,7 +23,6 @@ function filterGames(category) {
 
 function searchGames() {
   const query = document.getElementById("searchBar").value.toLowerCase();
-
   document.querySelectorAll(".card").forEach(card => {
     const title = card.querySelector("h3").innerText.toLowerCase();
     card.style.display = title.includes(query) ? "block" : "none";
