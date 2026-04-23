@@ -1,14 +1,11 @@
-function openGame(url) {
-  window.location.href = url;
+function toggleSettings() {
+  document.getElementById("settings").classList.toggle("open");
 }
 
 function setTab(title, iconPath) {
   document.title = title;
-  document.getElementById("favicon").href = iconPath;
-}
-
-function toggleSettings() {
-  document.getElementById("settings").classList.toggle("open");
+  const favicon = document.getElementById("favicon");
+  if (favicon) favicon.href = iconPath;
 }
 
 function filterGames(category) {
