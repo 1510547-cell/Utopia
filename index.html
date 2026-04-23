@@ -14,37 +14,86 @@
 <body>
   <div class="container">
 
+    <!-- Sidebar -->
     <aside class="sidebar">
       <h1>🎮 Games</h1>
+
       <button onclick="toggleSettings()">⚙ Settings</button>
+      <hr>
+
+      <h3>Categories</h3>
+      <button onclick="filterGames('all')">All</button>
+      <button onclick="filterGames('action')">Action</button>
+      <button onclick="filterGames('arcade')">Arcade</button>
+      <button onclick="filterGames('idle')">Idle</button>
+      <button onclick="filterGames('puzzle')">Puzzle</button>
+      <button onclick="filterGames('multiplayer')">Multiplayer</button>
     </aside>
 
+    <!-- Main Content -->
     <main class="content">
       <h2>Game Library</h2>
 
-      <!-- ✅ SEARCH BAR (VERY OBVIOUS VERSION) -->
+      <!-- Search Bar -->
       <input
         type="text"
         id="searchBar"
-        placeholder="🔍 SEARCH — TYPE HERE"
+        class="search-bar"
+        placeholder="Search games..."
         onkeyup="searchGames()"
-        style="
-          width: 300px;
-          padding: 10px;
-          margin-bottom: 20px;
-          font-size: 16px;
-        "
       >
 
+      <!-- Game Grid -->
       <div class="grid">
-        <div class="card"><h3>Cookie Clicker</h3></div>
-        <div class="card"><h3>Slope</h3></div>
-        <div class="card"><h3>2048</h3></div>
+        <div class="card" data-category="idle" onclick="openGame('https://cookieclicker.ee/')">
+          <h3>Cookie Clicker</h3>
+          <p>Idle</p>
+        </div>
+
+        <div class="card" data-category="action" onclick="openGame('https://slopegame.io/')">
+          <h3>Slope</h3>
+          <p>Action</p>
+        </div>
+
+        <div class="card" data-category="puzzle" onclick="openGame('https://play2048.co/')">
+          <h3>2048</h3>
+          <p>Puzzle</p>
+        </div>
+
+        <div class="card" data-category="multiplayer" onclick="openGame('https://krunker.io/')">
+          <h3>Krunker</h3>
+          <p>Multiplayer</p>
+        </div>
+
+        <div class="card" data-category="idle" onclick="openGame('https://www.coolmathgames.com/0-idle-breakout')">
+          <h3>Idle Breakout</h3>
+          <p>Idle</p>
+        </div>
+
+        <div class="card" data-category="arcade" onclick="openGame('https://retro-bowl.co/')">
+          <h3>Retro Bowl</h3>
+          <p>Arcade</p>
+        </div>
       </div>
     </main>
-
   </div>
 
-  script.js</script>
+  <!-- Settings Panel -->
+  <div class="settings" id="settings">
+    <h2>⚙ Settings</h2>
+
+    <h4>Tab Presets</h4>
+    <button onclick="setTab('Google Docs','icons/docs.ico')">📄 Google Docs</button>
+    <button onclick="setTab('Google Classroom','icons/classroom.ico')">🎓 Classroom</button>
+    <button onclick="setTab('Google Drive','icons/drive.ico')">📁 Drive</button>
+    <button onclick="setTab('Gmail','icons/gmail.ico')">✉ Gmail</button>
+    <button onclick="setTab('Games','icons/games.ico')">🎮 Default</button>
+
+    <br><br>
+    <button onclick="toggleSettings()">Close</button>
+  </div>
+
+  <!-- Scripts -->
+  script.js
 </body>
 </html>
