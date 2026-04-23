@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="icon" href="icons/default.ico" id="favicon">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="container">
+  <aside class="sidebar">
+    <h1>⚙ Games</h1>
+
+    <button onclick="setTab('Dashboard', 'icons/default.ico')">Default Tab</button>
+    <button onclick="setTab('Docs', 'icons/alt.ico')">Alternate Tab</button>
+
+    <hr>
+
+    <a href="#games">Games</a>
+    <a href="#about">About</a>
+  </aside>
+
+  <main class="content" id="games">
+    <h2>Games Library</h2>
+
+    <div class="grid">
+      <div class="card" onclick="openGame('https://example.com')">
+        <h3>Game 1</h3>
+        <p>Click to play</p>
+      </div>
+
+      <div class="card" onclick="openGame('https://example.com')">
+        <h3>Game 2</h3>
+        <p>Click to play</p>
+      </div>
+
+      <div class="card">
+        <h3>Coming Soon</h3>
+        <p>More games</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+``
