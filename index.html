@@ -1,149 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Games</title>
+  <meta charset="UTF-8">
+  <title>Games</title>
 
-<link rel="icon
-* {
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+  <!-- Favicon -->
+  <link id="favicon" rel="icon" href="icons/games.ico">
 
-body {
-  margin: 0;
-  background: #0f0f0f;
-  color: #eaeaea;
-}
-
-.container {
-  display: flex;
-  height: 100vh;
-}
-
-.sidebar {
-  width: 220px;
-  background: #151515;
-  padding: 20px;
-}
-
-.sidebar button {
-  width: 100%;
-  background: none;
-  border: none;
-  color: #ccc;
-  padding: 8px 0;
-  text-align: left;
-  cursor: pointer;
-}
-
-.sidebar button:hover {
-  color: #fff;
-}
-
-.content {
-  flex: 1;
-  padding: 25px;
-}
-
-.search-bar {
-  width: 320px;
-  padding: 10px;
-  margin-bottom: 20px;
-  background: #1c1c1c;
-  border: 1px solid #2a2a2a;
-  border-radius: 8px;
-  color: #eee;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 15px;
-}
-
-.card {
-  background: #1c1c1c;
-  padding: 15px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.card:hover {
-  background: #252525;
-  transform: translateY(-4px);
-}
-
-.settings {
-  position: fixed;
-  right: -300px;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  background: #121212;
-  padding: 20px;
-  transition: 0.25s;
-}
-
-.settings.open {
-  right: 0;
-}
-</style>
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="container">
+  <div class="container">
 
-  <aside class="sidebar">
-    <h2>🎮 Games</h2>
-    <button onclick="toggleSettings()">⚙ Settings</button>
-    <button onclick="filterGames('all')">All</button>
-    <button onclick="filterGames('action')">Action</button>
-    <button onclick="filterGames('puzzle')">Puzzle</button>
-  </aside>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h1>🎮 Games</h1>
 
-  <main class="content">
-    <h2>Game Library</h2>
+      <button onclick="toggleSettings()">⚙ Settings</button>
+      <hr>
 
-    <input
-      id="searchBar"
-      class="search-bar"
-      placeholder="Search games..."
-      onkeyup="searchGames()"
-    >
+      <h3>Categories</h3>
+      <button onclick="filterGames('all')">All</button>
+      <button onclick="filterGames('action')">Action</button>
+      <button onclick="filterGames('arcade')">Arcade</button>
+      <button onclick="filterGames('idle')">Idle</button>
+      <button onclick="filterGames('puzzle')">Puzzle</button>
+      <button onclick="filterGames('multiplayer')">Multiplayer</button>
+    </aside>
 
-    <div class="grid">
-      <div class="card" data-category="action"><h3>Slope</h3></div>
-      <div class="card" data-category="puzzle"><h3>2048</h3></div>
-      <div class="card" data-category="idle"><h3>Cookie Clicker</h3></div>
-    </div>
-  </main>
-</div>
+    <!-- Main Content -->
+    <main class="content">
+      <h2>Game Library</h2>
 
-<div class="settings" id="settings">
-  <h3>Settings</h3>
-  <button onclick="toggleSettings()">Close</button>
-</div>
+      <!-- Search Bar -->
+      <input
+        type="text"
+        id="searchBar"
+        class="search-bar"
+        placeholder="Search games..."
+        onkeyup="searchGames()"
+      >
 
-<script>
-function toggleSettings() {
-  document.getElementById("settings").classList.toggle("open");
-}
+      <!-- Games -->
+      <div class="grid">
+        <div class="card" data-category="idle">
+          <h3>Cookie Clicker</h3>
+        </div>
 
-function filterGames(cat) {
-  document.querySelectorAll(".card").forEach(c => {
-    c.style.display =
-      cat === "all" || c.dataset.category === cat ? "block" : "none";
-  });
-}
+        <div class="card" data-category="action">
+          <h3>Slope</h3>
+        </div>
 
-function searchGames() {
-  const q = document.getElementById("searchBar").value.toLowerCase();
-  document.querySelectorAll(".card").forEach(c => {
-    c.style.display = c.innerText.toLowerCase().includes(q) ? "block" : "none";
-  });
-}
-</script>
+        <div class="card" data-category="puzzle">
+          <h3>2048</h3>
+        </div>
 
+        <div class="card" data-category="multiplayer">
+          <h3>Krunker</h3>
+        </div>
+
+        <div class="card" data-category="arcade">
+          <h3>Retro Bowl</h3>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Settings Panel -->
+  <div class="settings" id="settings">
+    <h2>⚙ Settings</h2>
+
+    <button onclick="setTab('Google Docs','icons/docs.ico')">📄 Docs</button>
+    <button onclick="setTab('Google Classroom','icons/classroom.ico')">🎓 Classroom</button>
+    <button onclick="setTab('Gmail','icons/gmail.ico')">✉ Gmail</button>
+    <button onclick="setTab('Games','icons/games.ico')">🎮 Default</button>
+
+    <br><br>
+    <button onclick="toggleSettings()">Close</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
 </body>
 </html>
